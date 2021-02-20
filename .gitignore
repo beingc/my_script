@@ -1,0 +1,6 @@
+# pycharm
+.idea
+venv
+
+# python
+*.py[cod]
