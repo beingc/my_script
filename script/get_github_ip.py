@@ -1,10 +1,11 @@
 # coding=utf8
 # date: 2021-04-07
-# desc: get github ip with ipaddress.com
+# desc: get GitHub ip with ipaddress.com
 
 import requests
 import re
 import threading
+import time
 
 
 class MyThread(threading.Thread):
@@ -25,7 +26,7 @@ def get_site_ip(site):
     r = requests.get(url, headers=hd)
     r.raise_for_status()
     r.encoding = r.apparent_encoding
-    url = re.findall(r'ipv4/[\d\.]+', r.text)
+    url = re.findall(r'ipv4/[\d.]+', r.text)
     ip = str(url[0]).split('/')[1]
     print('{} {}'.format(ip, site))
 
@@ -35,6 +36,7 @@ def main():
     for site in site_list:
         t = MyThread(site)
         t.start()
+    time.sleep(3)
 
 
 if __name__ == '__main__':
