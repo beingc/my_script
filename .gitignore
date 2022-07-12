@@ -4,3 +4,6 @@ venv
 
 # python
 *.py[cod]
+
+# x
+temp
