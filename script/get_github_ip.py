@@ -1,7 +1,7 @@
 # coding=utf8
 # date: 2021-04-07
-# desc: get GitHub ip with ipaddress.com
-# todo: not work now
+# desc: get GitHub IP
+
 import requests
 import re
 import threading
@@ -31,11 +31,22 @@ def get_site_ip(site):
     print('{} {}'.format(ip, site))
 
 
-def main():
+def get_from_ipaddress():
     site_list = ['github.com', 'assets-cdn.github.com', 'github.global.ssl.fastly.net']
     for site in site_list:
         t = MyThread(site)
         t.start()
+
+
+def get_from_hellogithub():
+    url = 'https://raw.hellogithub.com/hosts'
+    r = requests.get(url)
+    print(r.text)
+
+
+def main():
+    # get_from_ipaddress()  # not work now
+    get_from_hellogithub()
     time.sleep(3)
 
 
