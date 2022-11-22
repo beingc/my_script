@@ -60,7 +60,7 @@ def save_pics(url):
 
 
 def main():
-    # Bing pics API
+    # Bing pics API, idx=0(开始日期,0:今天,1:昨天)n=1(数量)
     url = "http://cn.bing.com/HPImageArchive.aspx?idx=0&n=1"
 
     html = get_html_text(url)
