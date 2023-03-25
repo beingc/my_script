@@ -3,6 +3,7 @@
 # Description: Get win10 lock screen wallpaper and save at 'D:\temp'
 
 import os
+import glob
 import shutil
 from datetime import datetime
 
@@ -35,7 +36,7 @@ def file_rename(path):
 
 if __name__ == '__main__':
     # Win10 lock screen wallpaper location
-    src_path = r"C:\Users\x\AppData\Local\Packages\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy\LocalState\Assets"
+    src_path = glob.glob(r"C:\Users\x*\AppData\Local\Packages\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy\LocalState\Assets")[0]
     # path to save the wallpaper
     dst_path = r"D:\temp"
 
