@@ -3,18 +3,15 @@
 # Date: 2022/7/10
 # Desc: remove duplicate lines
 
-input_file = 'temp/all_track.txt'
-output_file = 'temp/track.txt'
+def deduplicate_lines(in_f, out_f):
+    with open(in_f, 'r') as f:
+        data = sorted(set(line.strip() for line in f))
 
-list_1 = []
-with open(input_file, 'r') as f:
-    for line in f.readlines():
-        if line.strip(' ') != '\n':
-            list_1.append(line)
-print("Input line:", len(list_1))
+    with open(out_f, 'w') as f:
+        f.writelines(line + '\n' for line in data)
 
-# 利用set去重
-with open(output_file, 'w') as f:
-    # for i in set(list_1):
-    f.writelines(set(list_1))
-print("Output line:", len(set(list_1)))
+
+if __name__ == '__main__':
+    input_file = 'temp/all_track.txt'
+    output_file = 'temp/track.txt'
+    deduplicate_lines(input_file, output_file)
