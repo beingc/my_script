@@ -12,7 +12,7 @@ def get_file_list(path):
     src_file_list = []
     for file in os.listdir(path):
         abs_path = os.path.join(path, file)
-        # Remove file which size less then 200K
+        # Remove file which size less than 200K
         if os.path.getsize(abs_path) > 204800:
             src_file_list.append(abs_path)
     return src_file_list
@@ -38,9 +38,11 @@ if __name__ == '__main__':
     # Win10 lock screen wallpaper location
     src_path = glob.glob(r"C:\Users\x*\AppData\Local\Packages\Microsoft.Windows.ContentDeliveryManager_cw5n1h2txyewy\LocalState\Assets")[0]
     # path to save the wallpaper
-    dst_path = r"D:\temp"
+    date_str = datetime.now().strftime('%Y%m%d')
+    tmp_path = r"D:\temp"
+    dst_path = os.path.join(tmp_path, date_str)
 
     file_list = get_file_list(src_path)
     copy_file(file_list, dst_path)
     file_rename(dst_path)
-    os.system('explorer.exe D:\\temp')
+    os.system(f'explorer.exe {dst_path}')
